@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to Prepare for AI-Era ML Interviews</title>
+    <meta
+      name="description"
+      content="A Medium-style guide to modern ML and AI engineering interviews: systems reasoning, transformers, numerical stability, distributed training, inference, and preparation strategy."
+    >
+    <meta name="author" content="Modular AI">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Modular AI blog home">Modular AI</a>
+    </header>
+
+    <main>
+      <article class="post">
+        <header class="post-header">
+          <p class="kicker">AI interviews / ML systems / 2026</p>
+          <h1>How to prepare for AI-era ML interviews</h1>
+          <p class="subtitle">
+            Modern ML interviews are becoming less about reciting algorithms and more about showing that you can build, debug, and reason through real AI systems.
+          </p>
+          <div class="meta-row">
+            <div>
+              <p class="author">Modular AI</p>
+              <p class="meta">8 min read / Updated for 2026</p>
+            </div>
+          </div>
+        </header>
+
+        <figure class="hero-visual">
+          <img src="assets/interview-map.svg" alt="Map of modern AI interview areas including transformers, systems, inference, and numerical stability.">
+          <figcaption>Modern ML interviews now sit at the intersection of implementation, model internals, and infrastructure.</figcaption>
+        </figure>
+
+        <section class="article-section">
+          <p>
+            Over the past few months, I have been studying modern ML and AI systems interview material across frontier-style model work and infrastructure-heavy roles. A pattern kept showing up: the interview loop is changing.
+          </p>
+          <p>
+            The older ML interview often centered on classical modeling, feature engineering, and a few derivations. Those still matter. But the current AI-era loop increasingly tests whether you can move between code, tensors, training stability, inference latency, and distributed systems without losing the thread.
+          </p>
+          <p>
+            In other words, the question is no longer only: <em>Do you know the concept?</em> It is also: <em>Can you make the concept work under production constraints?</em>
+          </p>
+        </section>
+
+        <section id="expect" class="article-section">
+          <h2>What you can broadly expect</h2>
+          <p>
+            The exact loop varies by company and level, but modern AI engineering interviews tend to cluster around a few rounds:
+          </p>
+          <ul>
+            <li>Implementation-heavy coding with state, concurrency, or simulation-style logic.</li>
+            <li>Transformer internals, usually without relying on high-level framework abstractions.</li>
+            <li>Numerical stability and optimization dynamics.</li>
+            <li>ML systems design, especially training and inference infrastructure.</li>
+            <li>Debugging scenarios involving data, distributed jobs, model quality, or serving latency.</li>
+          </ul>
+          <p>
+            The most important shift is that these areas are no longer isolated. A transformer implementation question can quickly become an inference-memory question. A training instability question can become a distributed debugging question. A system design question can require both product sense and GPU-utilization intuition.
+          </p>
+        </section>
+
+        <section id="rounds" class="article-section">
+          <h2>1. Implementation speed and systems reasoning</h2>
+          <p>
+            A lot of AI engineering work looks like building moderately complex systems quickly, keeping the state model correct, and explaining bottlenecks as they appear. That shows up directly in interviews.
+          </p>
+          <p>Examples of questions I would prepare for:</p>
+          <ul>
+            <li>Build a small game or simulation system with clean state transitions.</li>
+            <li>Design an event processing pipeline with retries, idempotency, and failure handling.</li>
+            <li>Implement a concurrent workflow and explain how you would test race conditions.</li>
+            <li>Debug a pipeline where one slow stage causes the whole system throughput to collapse.</li>
+          </ul>
+          <p>
+            The best way to prepare is to practice implementing small systems from scratch under time pressure. Do not only solve isolated algorithm questions. Practice reading your own code as if it were going to run in production.
+          </p>
+        </section>
+
+        <section class="article-section">
+          <h2>2. Transformer internals are becoming table stakes</h2>
+          <p>
+            For AI roles, it is increasingly important to understand transformer implementation details without hiding behind `torch.nn.MultiheadAttention` or a HuggingFace abstraction.
+          </p>
+          <p>You should be comfortable with:</p>
+          <ul>
+            <li>Multi-head attention and causal masking.</li>
+            <li>Stable softmax and tensor-shape reasoning.</li>
+            <li>KV-cache updates during autoregressive decoding.</li>
+            <li>RoPE and positional encoding behavior.</li>
+            <li>Grouped Query Attention and Multi-Query Attention tradeoffs.</li>
+          </ul>
+          <p>
+            A good interview answer usually does not stop at "this is how attention works." It also explains why the implementation matters for memory bandwidth, inference throughput, and correctness during decoding.
+          </p>
+        </section>
+
+        <section class="article-section">
+          <h2>3. Numerical stability is underrated</h2>
+          <p>
+            Numerical stability questions look deceptively simple. In real training runs, they are often the difference between a model that trains and a model that silently falls apart.
+          </p>
+          <p>Topics I would treat as core:</p>
+          <ul>
+            <li>Log-sum-exp and stable softmax.</li>
+            <li>fp16 and bf16 failure modes.</li>
+            <li>NaNs from attention logits, normalization, data, or optimizer settings.</li>
+            <li>LayerNorm epsilon, gradient scaling, and gradient clipping.</li>
+            <li>Loss spikes and when to restart versus diagnose.</li>
+          </ul>
+          <p>
+            When preparing, do not just memorize the trick. Implement the unstable version, make it fail, then fix it. That kind of muscle memory is exactly what helps during debugging interviews.
+          </p>
+        </section>
+
+        <section class="article-section">
+          <h2>4. Backprop still matters</h2>
+          <p>
+            Even in a systems-heavy interview loop, deep understanding of backprop is still high signal. Interviewers often want to know whether you understand optimization dynamics rather than only formulas.
+          </p>
+          <p>Examples:</p>
+          <ul>
+            <li>Derive softmax plus cross entropy backward.</li>
+            <li>Explain gradient flow through attention scores and values.</li>
+            <li>Explain why residual connections help optimization.</li>
+            <li>Compare pre-LN and post-LN transformer stability.</li>
+          </ul>
+          <p>
+            My favorite way to prepare here is pen-and-paper derivation first, then a tiny NumPy or PyTorch implementation to verify the gradient numerically.
+          </p>
+        </section>
+
+        <section class="article-section">
+          <h2>5. ML systems design is more infrastructure-heavy now</h2>
+          <p>
+            ML system design used to often mean recommender systems, ranking, feature stores, and evaluation. Those are still useful, but AI infrastructure interviews increasingly go deeper into training and serving.
+          </p>
+          <p>Areas worth preparing:</p>
+          <ul>
+            <li>Data parallelism, tensor parallelism, pipeline parallelism, ZeRO, and FSDP.</li>
+            <li>NCCL bottlenecks, GPU utilization, and activation checkpointing.</li>
+            <li>FlashAttention and memory hierarchy.</li>
+            <li>vLLM, paged attention, continuous batching, and inference scheduling.</li>
+            <li>Distributed checkpointing, preemption, monitoring, and recovery.</li>
+          </ul>
+          <p>
+            In this round, it helps to start with a clear structure. State assumptions, define the workload, identify bottlenecks, and then walk through training or serving architecture layer by layer.
+          </p>
+        </section>
+
+        <section class="article-section callout">
+          <h2>Sample questions to calibrate depth</h2>
+          <p>These are representative of the level of detail I would practice:</p>
+          <ul>
+            <li>How does FSDP differ from standard data parallelism?</li>
+            <li>What is Grouped Query Attention and why is it used in modern LLMs?</li>
+            <li>What is FlashAttention and why is it important?</li>
+            <li>How do you debug a training job that produces NaN losses?</li>
+            <li>What is the KV-cache and why is it critical for inference efficiency?</li>
+            <li>What is continuous batching and why does it matter for serving?</li>
+          </ul>
+          <p>
+            Notice the pattern: each question looks conceptual at first, but a strong answer quickly becomes practical.
+          </p>
+        </section>
+
+        <section id="prep" class="article-section">
+          <h2>How I would prepare</h2>
+          <p>
+            If I were structuring preparation from scratch, I would avoid bouncing randomly between papers, blog posts, and interview questions. I would instead use a weekly plan:
+          </p>
+          <ol>
+            <li>Spend a few days revisiting ML fundamentals and derivations.</li>
+            <li>Implement attention, masking, RoPE, KV-cache, and decoding from scratch.</li>
+            <li>Practice numerical stability by intentionally breaking small examples.</li>
+            <li>Study distributed training and inference serving as systems, not vocabulary lists.</li>
+            <li>Do mock design rounds where you force yourself to state assumptions and tradeoffs.</li>
+          </ol>
+          <p>
+            The goal is not to know every paper. The goal is to become fluent enough that, when the interviewer changes the constraint, you can reason from first principles instead of reciting a memorized answer.
+          </p>
+        </section>
+
+        <section class="article-section recommendation" aria-label="Preparation recommendation">
+          <h2>A resource I recommend</h2>
+          <p>
+            I have been organizing practice around <a href="https://crackmlinterview.com/">CrackML Interview</a>. It covers transformers, distributed training, ML infrastructure, research engineering, performance intuition, debugging, numerical stability, and multimodal systems.
+          </p>
+          <p>
+            If you are preparing for AI-era ML interviews, I highly recommend going through some of the questions there. I use it as a structured way to turn scattered topics into concrete practice, and it has been effective for building the implementation-level reasoning these interviews increasingly expect.
+          </p>
+        </section>
+
+        <section class="article-section">
+          <h2>Final takeaway</h2>
+          <p>
+            The modern ML interview is becoming more honest about the work. Real AI engineering is interdisciplinary, stateful, numerically fragile, and performance-sensitive. The strongest candidates are not just people who know the concepts. They are people who can make those concepts work.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>Written by Modular AI</p>
+    </footer>
+  </body>
+</html>

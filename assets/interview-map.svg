@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI interview topic map</title>
+  <desc id="desc">A structured map connecting implementation, transformer internals, numerical stability, distributed systems, and inference serving.</desc>
+  <rect width="1200" height="900" fill="#ffffff"/>
+  <rect x="46" y="46" width="1108" height="808" rx="22" fill="#f5f7f8" stroke="#171717" stroke-width="3"/>
+  <g fill="none" stroke="#171717" stroke-width="5" stroke-linecap="round">
+    <path d="M600 236v126"/>
+    <path d="M600 538v126"/>
+    <path d="M438 450H292"/>
+    <path d="M762 450h146"/>
+    <path d="M486 340 350 246"/>
+    <path d="M714 340l136-94"/>
+    <path d="M486 560 350 654"/>
+    <path d="M714 560l136 94"/>
+  </g>
+  <circle cx="600" cy="450" r="155" fill="#171717"/>
+  <text x="600" y="412" text-anchor="middle" fill="#fffdf8" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800">AI-era</text>
+  <text x="600" y="466" text-anchor="middle" fill="#fffdf8" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800">ML interview</text>
+  <text x="600" y="516" text-anchor="middle" fill="#d8f3ee" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="650">build / debug / reason</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <g transform="translate(385 106)">
+      <rect width="430" height="130" rx="18" fill="#e9f3ee" stroke="#171717" stroke-width="3"/>
+      <text x="215" y="52" text-anchor="middle" fill="#12403d" font-size="30" font-weight="800">Transformers</text>
+      <text x="215" y="91" text-anchor="middle" fill="#35332e" font-size="22">MHA / KV cache / RoPE / GQA</text>
+    </g>
+    <g transform="translate(385 664)">
+      <rect width="430" height="130" rx="18" fill="#f2eadb" stroke="#171717" stroke-width="3"/>
+      <text x="215" y="52" text-anchor="middle" fill="#7c2d12" font-size="30" font-weight="800">Numerical stability</text>
+      <text x="215" y="91" text-anchor="middle" fill="#35332e" font-size="22">log-sum-exp / fp16 / NaNs</text>
+    </g>
+    <g transform="translate(96 385)">
+      <rect width="330" height="130" rx="18" fill="#eef2ff" stroke="#171717" stroke-width="3"/>
+      <text x="165" y="52" text-anchor="middle" fill="#2457a6" font-size="30" font-weight="800">Systems</text>
+      <text x="165" y="91" text-anchor="middle" fill="#35332e" font-size="22">state / events / concurrency</text>
+    </g>
+    <g transform="translate(774 385)">
+      <rect width="330" height="130" rx="18" fill="#f0f9ff" stroke="#171717" stroke-width="3"/>
+      <text x="165" y="52" text-anchor="middle" fill="#075985" font-size="30" font-weight="800">Inference</text>
+      <text x="165" y="91" text-anchor="middle" fill="#35332e" font-size="22">batching / vLLM / latency</text>
+    </g>
+    <g transform="translate(96 132)">
+      <rect width="305" height="120" rx="18" fill="#fff7ed" stroke="#171717" stroke-width="3"/>
+      <text x="152.5" y="50" text-anchor="middle" fill="#9a3412" font-size="27" font-weight="800">Backprop</text>
+      <text x="152.5" y="86" text-anchor="middle" fill="#35332e" font-size="20">gradients / pre-LN</text>
+    </g>
+    <g transform="translate(799 132)">
+      <rect width="305" height="120" rx="18" fill="#f5f3ff" stroke="#171717" stroke-width="3"/>
+      <text x="152.5" y="50" text-anchor="middle" fill="#5b21b6" font-size="27" font-weight="800">Training infra</text>
+      <text x="152.5" y="86" text-anchor="middle" fill="#35332e" font-size="20">TP / PP / DP / FSDP</text>
+    </g>
+    <g transform="translate(96 648)">
+      <rect width="305" height="120" rx="18" fill="#ecfccb" stroke="#171717" stroke-width="3"/>
+      <text x="152.5" y="50" text-anchor="middle" fill="#3f6212" font-size="27" font-weight="800">Debugging</text>
+      <text x="152.5" y="86" text-anchor="middle" fill="#35332e" font-size="20">pipelines / bottlenecks</text>
+    </g>
+    <g transform="translate(799 648)">
+      <rect width="305" height="120" rx="18" fill="#fee2e2" stroke="#171717" stroke-width="3"/>
+      <text x="152.5" y="50" text-anchor="middle" fill="#991b1b" font-size="27" font-weight="800">Evaluation</text>
+      <text x="152.5" y="86" text-anchor="middle" fill="#35332e" font-size="20">quality / regressions</text>
+    </g>
+  </g>
+</svg>
