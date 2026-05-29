@@ -31,8 +31,9 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site/assets
-          cp index.html styles.css README.md .nojekyll _site/
+          cp index.html career-growth-ai.html styles.css README.md .nojekyll _site/
           cp assets/interview-map.svg _site/assets/
+          cp assets/career-growth-map.svg _site/assets/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
